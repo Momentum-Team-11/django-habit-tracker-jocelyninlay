@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="container box w-60 h5 bg-light-red">
+    <h1 class="f2 lh-copy"> Let's build some habits! Login or make an accout to continue.</h1>
+        <div class="f6 lh-copy">
+            <button class="button is-primary"><a href={% url 'registration_register' %} class="db">Register</a></button>
+            <button class="button is-primary"><a href={% url 'auth_login' %} class="db">Log In</a></button>
+</div>
+{% endblock content %}  
