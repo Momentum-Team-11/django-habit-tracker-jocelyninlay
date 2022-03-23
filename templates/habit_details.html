@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">{{ habit.overall_goal }} details</h1>
+
+
+<div class="content">
+
+    <p> {{ habit.description }}</p>
+    {% for result in results %}
+    <div class="box">
+        <p><b> Action on {{ result.date_accomplished }} </b>: {{ result.daily_record }}</p>
+    <p> <b> Goal Met? </b> {{ result.goal_accomplished }} </p>
+    </div>
+    {% endfor %}
+
+    <a class= "content is-small" href="{% url 'add_result' pk=habit.pk %}">Add Record</a><br>
+
+</div> <!-- end of first div -->
+{% endblock %}
