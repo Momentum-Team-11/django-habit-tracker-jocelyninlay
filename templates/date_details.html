@@ -5,18 +5,18 @@
 
 
 <div class="content">
+    <h1>Habit for {{ date }}</h1>
 
+   
     <p> {{ habit.description }}</p>
-    {% for result in results %}
     <div class="box">
         <p><b> Action on {{ result.date_accomplished }} </b>: {{ result.daily_record }}</p>
-    <p class="{% if result.goal_accomplished == True %} green {% endif %}"> <b> Goal Met? </b> {{ result.goal_accomplished }} </p>
+    <p> <b> Goal Met? </b> {{ result.goal_accomplished }} </p>
     </div>
-    {% endfor %}
-
-    {% if result.goal_accomplished == True %}
-    <p>Congratulations on meeting your goal</p>
-    {% endif %}
+    <p>
+        <a href="{% url 'date_details' year=prev_day.year month=prev_day.month day=prev_day.day %}">{{ prev_day }}</a> |
+        <a href="{% url 'date_details' year=next_day.year month=next_day.month day=next_day.day %}">{{ next_day }}</a>
+      </p>
 
     <a class= "content is-small" href="{% url 'add_result' pk=habit.pk %}">Add Record</a><br>
 

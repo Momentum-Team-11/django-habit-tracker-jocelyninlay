@@ -13,9 +13,12 @@
     
     <a class= "content is-small" href="{% url 'edit_habit' pk=habit.pk %}">Edit Habit</a><br>
     <a class="red content is-small" href="{% url 'delete_habit' pk=habit.pk %}">Delete Habit</a>
-    </p>
+    
+</p>
 </div> <!--end of second one, box -->
 
 {% endfor %}
 </div> <!-- end of first div -->
 {% endblock %}
+
+<!-- <a class= "content is-small" href="{% url 'date_details' year=year month=month day=day %}">See by Date</a><br> -->

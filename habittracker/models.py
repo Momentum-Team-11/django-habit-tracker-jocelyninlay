@@ -23,7 +23,7 @@ class Result(models.Model):
     habit_practiced = models.ForeignKey(Habit, on_delete=models.CASCADE, null=True, blank=True, related_name="habit_practiced")
     daily_record = models.CharField(max_length=200)
     goal_accomplished = models.BooleanField(default=False) 
-    date_accomplished = models.DateField(auto_now_add=datetime.now)
+    date_accomplished = models.DateField(auto_now_add=datetime.now, verbose_name="Date for habit")
 
     def __str__(self):
         return str(self.daily_record)
