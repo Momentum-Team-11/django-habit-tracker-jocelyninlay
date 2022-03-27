@@ -132,6 +132,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = "habittracker.User"
 
+LOGIN_REDIRECT_URL = 'habit_list'
 
 django_on_heroku.settings(locals())
 del DATABASES['default']['OPTIONS']['sslmode']

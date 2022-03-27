@@ -29,7 +29,6 @@ urlpatterns = [
     path("habit/add/", habittracker_views.add_habit, name="add_habit"),
     path("habit/<int:pk>/add/", habittracker_views.add_result, name="add_result"),
     path("habit/<int:pk>/", habittracker_views.habit_details,  name="habit_details"),
-    path("habit/<int:year>/<int:month>/<int:day>/", habittracker_views.date_details,  name="date_details"),
     path("habit/<int:pk>/edit/", habittracker_views.edit_habit, name="edit_habit"),
     path("habit/<int:pk>/edit/", habittracker_views.edit_result, name="edit_result"),
     path("habit/<int:pk>/delete/", habittracker_views.delete_habit, name="delete_habit"),

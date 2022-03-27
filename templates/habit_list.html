@@ -9,7 +9,7 @@
 {% for habit in habits %}
 <div class="box">
     <a href= {% url 'habit_details' pk=habit.pk %}> {{ habit.overall_goal }}</a></h3>
-    <p> {{ habit.description}}</p>
+    <p> {{ habit.description }}</p>
     
     <a class= "content is-small" href="{% url 'edit_habit' pk=habit.pk %}">Edit Habit</a><br>
     <a class="red content is-small" href="{% url 'delete_habit' pk=habit.pk %}">Delete Habit</a>
@@ -21,4 +21,3 @@
 </div> <!-- end of first div -->
 {% endblock %}
 
-<!-- <a class= "content is-small" href="{% url 'date_details' year=year month=month day=day %}">See by Date</a><br> -->

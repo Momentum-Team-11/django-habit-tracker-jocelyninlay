@@ -8,17 +8,15 @@
 
     <p> {{ habit.description }}</p>
     {% for result in results %}
-    <div class="box">
+    <div class="box {% if result.goal_accomplished == True %} has-background-danger-light {% endif %}">
         <p><b> Action on {{ result.date_accomplished }} </b>: {{ result.daily_record }}</p>
-    <p class="{% if result.goal_accomplished == True %} green {% endif %}"> <b> Goal Met? </b> {{ result.goal_accomplished }} </p>
+    <p class=""> <b> Goal Met? </b> {{ result.goal_accomplished }} </p>
+    <a class= "content is-small" href="{% url 'edit_result' pk=result.pk %}">Update Record</a><br>
     </div>
     {% endfor %}
 
-    {% if result.goal_accomplished == True %}
-    <p>Congratulations on meeting your goal</p>
-    {% endif %}
-
     <a class= "content is-small" href="{% url 'add_result' pk=habit.pk %}">Add Record</a><br>
+    
 
 </div> <!-- end of first div -->
 {% endblock %}

@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Edit Album</h1>
+<h1>Update Record</h1>
 
 <div>
-  <form action="{% url 'edit_habit' pk=result.pk %}" method="POST">
+  <form action="{% url 'edit_result' pk=result.pk %}" method="POST">
     {% csrf_token %}
     <div class="form-field mt3">
       <label for="{{form.daily_record.id_for_label}}" class="db fw4 lh-copy f6">{{ form.daily_record.label }}</label>

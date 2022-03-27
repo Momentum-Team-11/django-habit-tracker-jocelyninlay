@@ -31,27 +31,27 @@ def habit_details(request, pk):
     results = Result.objects.filter(habit_practiced=habit.id)
     return render (request, "habit_details.html", {"habit": habit, "results": results})
 
-def date_details(request, year=None, month=None, day=None):
-    if year is None:
-        date_for_habit = datetime.date.today
-    else:
-        date_for_habit = datetime.date(year, month, day)
-    next_day = date_for_habit + datetime.timedelta(days=1)
-    prev_day = date_for_habit + datetime.timedelta(days=-1)
-    habit, _ = request.user.app_user.get_or_create(date=date_for_habit)
-    result = Result.objects.for_user(request.user).exclude(pk__in=[r.pk for r in result.habit_practiced.all()])
+# def date_details(request, year=None, month=None, day=None):
+#     if year is None:
+#         date_for_habit = datetime.date.today
+#     else:
+#         date_for_habit = datetime.date(year, month, day)
+#     next_day = date_for_habit + datetime.timedelta(days=1)
+#     prev_day = date_for_habit + datetime.timedelta(days=-1)
+#     habit, _ = request.user.app_user.get_or_create(date=date_for_habit)
+#     result = Result.objects.for_user(request.user).exclude(pk__in=[r.pk for r in result.habit_practiced.all()])
 
-    return render(
-        request,
-        "date_details.html",
-        {
-            "habit": habit,
-            "result": result,
-            "date": date_for_habit,
-            "next_day": next_day,
-            "prev_day": prev_day,
-        },
-    )
+#     return render(
+#         request,
+#         "date_details.html",
+#         {
+#             "habit": habit,
+#             "result": result,
+#             "date": date_for_habit,
+#             "next_day": next_day,
+#             "prev_day": prev_day,
+#         },
+#     )
 
 @login_required
 def add_habit(request):
@@ -89,15 +89,15 @@ def edit_habit(request, pk):
     return render(request, "edit_habit.html", {"form": form, "habit": habit})
 
 def edit_result(request, pk):
-    result = get_object_or_404(Habit, pk=pk)
+    result = get_object_or_404(Result, pk=pk)
     if request.method == 'GET':
-        form = HabitForm(instance=result)
+        form = ResultForm(instance=result)
     else:
-        form = HabitForm(data=request.POST, instance=result)
+        form = ResultForm(data=request.POST, instance=result)
         if form.is_valid():
             form.save()
-            return redirect(to="habit_list")
-    return render(request, "edit_result.html", {"form": form, "habit": habit, "result": result})
+            return redirect(to="habit_details")
+    return render(request, "edit_result.html", {"form": form, "result": result})
 
 def delete_habit(request, pk):
     habit = get_object_or_404(Habit, pk=pk)
