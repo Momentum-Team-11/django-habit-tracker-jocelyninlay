@@ -4,9 +4,9 @@ from .models import User, Habit, Result
 class HabitForm(forms.ModelForm):
     class Meta:
         model = Habit
-        fields = ["overall_goal", "description"]
+        fields = ["name","overall_goal", "description"]
 
 class ResultForm(forms.ModelForm):
     class Meta:
         model = Result
-        fields = ["habit_practiced", "daily_record", "goal_accomplished"]
+        fields = ["habit_practiced", "daily_record",]

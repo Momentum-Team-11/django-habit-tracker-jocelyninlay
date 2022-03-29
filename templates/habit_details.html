@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="title">{{ habit.overall_goal }} details</h1>
+<h1 class="title">{{ habit.name }} details</h1>
 
 
 <div class="content">
-
+    <p> {{ habit.overall_goal }}</p>
     <p> {{ habit.description }}</p>
     {% for result in results %}
     <div class="box {% if result.goal_accomplished == True %} has-background-danger-light {% endif %}">

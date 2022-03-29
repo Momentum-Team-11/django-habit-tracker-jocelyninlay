@@ -4,7 +4,7 @@
 <div>
   <form action="{% url 'delete_habit' pk=habit.pk %}" method="POST">
     {% csrf_token %}
-    <p>Are you sure you want to delete <span class="b">{{ habit.overall_goal }}</span>?</p>
+    <p>Are you sure you want to delete <span class="b">{{ habit.name }}</span>?</p>
     <div>
       <button class="f6 link dim br1 ph3 pv2 mb2 dib" type="submit">Delete Habit</button><br />
       <a href="{% url 'habit_list' %}" class="mt3 f6 link dim br1 ba ph3 pv2 mb2 dib dark-pink">Cancel</a>

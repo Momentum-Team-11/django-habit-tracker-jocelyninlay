@@ -18,6 +18,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from habittracker import views as habittracker_views
+from api import views as api_views
 
 
 urlpatterns = [
@@ -32,4 +33,7 @@ urlpatterns = [
     path("habit/<int:pk>/edit/", habittracker_views.edit_habit, name="edit_habit"),
     path("habit/<int:pk>/edit/", habittracker_views.edit_result, name="edit_result"),
     path("habit/<int:pk>/delete/", habittracker_views.delete_habit, name="delete_habit"),
+    path("api-auth/", include("rest_framework.urls")),
+    path("api/habit", api_views.HabitListView.as_view(), name="api_habit_list"),
+    path("api/habit/<int:pk>/", api_views.ResultListView.as_view(), name="api_result_list"),
 ]
