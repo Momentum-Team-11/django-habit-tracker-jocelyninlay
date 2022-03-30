@@ -11,14 +11,14 @@ class User(AbstractUser):
         return self.username
 
 class Habit(models.Model):
-    name = models.CharField(max_length=200)
-    overall_goal = models.IntegerField()
+    name = models.CharField(null = True, max_length=200)
+    overall_goal = models.IntegerField(default = 0)
     description = models.TextField(max_length=1000)
     app_user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name="goal_setter")
     
 
     def __str__(self):
-        return self.overall_goal
+        return str(self.overall_goal)
 
 class Result(models.Model):
     habit_practiced = models.ForeignKey(Habit, on_delete=models.CASCADE, null=True, blank=True, related_name="habit_practiced")

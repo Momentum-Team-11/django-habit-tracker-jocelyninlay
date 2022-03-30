@@ -35,5 +35,8 @@ urlpatterns = [
     path("habit/<int:pk>/delete/", habittracker_views.delete_habit, name="delete_habit"),
     path("api-auth/", include("rest_framework.urls")),
     path("api/habit", api_views.HabitListView.as_view(), name="api_habit_list"),
-    path("api/habit/<int:pk>/", api_views.ResultListView.as_view(), name="api_result_list"),
+    path("api/habit/records/", api_views.ResultListView.as_view(), name="api_result_list"),
+    path("api/habit/<int:pk>/", api_views.HabitDetails.as_view(), name="api_habit_details"),
+    path("users/", api_views.UserList.as_view(), name="api_user_list"),
+    path("users/<int:pk>", api_views.UserDetail.as_view(), name="api_user_details"),
 ]
