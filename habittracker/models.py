@@ -21,13 +21,13 @@ class Habit(models.Model):
         return str(self.overall_goal)
 
 class Result(models.Model):
-    habit_practiced = models.ForeignKey(Habit, on_delete=models.CASCADE, null=True, blank=True, related_name="habit_practiced")
+    habit_practiced = models.ForeignKey(Habit, on_delete=models.CASCADE, null=True, blank=True, related_name="results")
     daily_record = models.IntegerField() 
     date_accomplished = models.DateField(auto_now_add=datetime.now, verbose_name="Date for habit")
 
     def __str__(self):
         return str(self.daily_record)
-     
+
     class Meta:
         constraints = [
             models.UniqueConstraint(fields=["habit_practiced", "date_accomplished"], name="one_record_per_day")

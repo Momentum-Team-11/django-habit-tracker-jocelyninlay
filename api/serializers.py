@@ -8,8 +8,6 @@ class HabitSerializer(serializers.ModelSerializer):
             "pk",
             "name",
             "overall_goal",
-            "app_user",
-            "owner",
         )
 
 class ResultSerializer(serializers.ModelSerializer):
@@ -22,6 +20,15 @@ class ResultSerializer(serializers.ModelSerializer):
         "date_accomplished",
         )
 
+class HabitResultSerializer(serializers.ModelSerializer):
+    results = ResultSerializer(many=True, required=False)
+    class Meta:
+        model = Habit
+        fields = (
+            "pk",
+            "name",
+            "results",
+        )
 
 class UserSerializer(serializers.ModelSerializer):
     habits = serializers.PrimaryKeyRelatedField(many=True, queryset=Habit.objects.all())
