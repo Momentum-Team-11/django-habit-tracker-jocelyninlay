@@ -13,6 +13,7 @@ gunicorn = "*"
 djangorestframework = "*"
 markdown = "*"
 django-filter = "*"
+django-extensions = "*"
 
 [dev-packages]
 

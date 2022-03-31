@@ -33,7 +33,8 @@ urlpatterns = [
     path("habit/<int:pk>/edit/", habittracker_views.edit_habit, name="edit_habit"),
     path("habit/<int:pk>/edit/", habittracker_views.edit_result, name="edit_result"),
     path("habit/<int:pk>/delete/", habittracker_views.delete_habit, name="delete_habit"),
-    path("api-auth/", include("rest_framework.urls")),
+    path("api-auth/", include("rest_framework.urls")),  
+
     path("api/habit", api_views.HabitListView.as_view(), name="api_habit_list"),
     path("api/habit/records/<int:pk>/", api_views.ResultListView.as_view(), name="api_result_list"),
     path("api/habit/<int:pk>/", api_views.HabitDetails.as_view(), name="api_habit_details"),

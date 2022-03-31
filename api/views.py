@@ -14,13 +14,18 @@ class HabitListView(ListCreateAPIView, RetrieveUpdateDestroyAPIView ):
     def perform_create(self, serializer):
         serializer.save(app_user=self.request.user)
 
-class ResultListView(RetrieveUpdateDestroyAPIView, CreateAPIView):
-    queryset = Result.objects.all()
+class ResultListView(RetrieveUpdateDestroyAPIView, ListCreateAPIView):
     serializer_class = ResultSerializer
 
-class HabitDetails(RetrieveUpdateDestroyAPIView, CreateAPIView):
+    def get_queryset(self):
+        return Result.objects.filter(habit_practiced_id=self.kwargs["pk"])
+
+class HabitDetails(RetrieveUpdateDestroyAPIView, ListCreateAPIView):
     queryset = Habit.objects.all()
     serializer_class = HabitResultSerializer
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
 
 class UserList(ListAPIView):
     queryset = User.objects.all()

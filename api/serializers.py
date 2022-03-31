@@ -9,12 +9,18 @@ class HabitSerializer(serializers.ModelSerializer):
             "name",
             "overall_goal",
         )
+class HabitNameSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Habit
+        fields = (
+            "name",
+        )
 
 class ResultSerializer(serializers.ModelSerializer):
-    class Meta:
+   habit_practiced = serializers.SlugRelatedField(read_only=True, slug_field='name')
+   class Meta:
         model = Result
         fields = (
-        "pk",
         "habit_practiced",
         "daily_record",
         "date_accomplished",
