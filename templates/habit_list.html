@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">All Habits</h1>
+
+<p><a href="{% url 'add_habit' %}">Add New Habit</a> </p>
+
+<div class="content">
+{% for habit in habits %}
+<div class="box">
+    <a href= {% url 'habit_details' pk=habit.pk %}> {{ habit.name }}</a></h3>
+    <p> {{ habit.description }}</p>
+    
+    <a class= "content is-small" href="{% url 'edit_habit' pk=habit.pk %}">Edit Habit</a><br>
+    <a class="red content is-small" href="{% url 'delete_habit' pk=habit.pk %}">Delete Habit</a>
+    
+</p>
+</div> <!--end of second one, box -->
+
+{% endfor %}
+</div> <!-- end of first div -->
+{% endblock %}
+

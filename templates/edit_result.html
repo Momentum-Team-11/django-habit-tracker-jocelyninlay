@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Update Record</h1>
+
+<div>
+  <form action="{% url 'edit_result' pk=result.pk %}" method="POST">
+    {% csrf_token %}
+    <div class="form-field mt3">
+      <label for="{{form.daily_record.id_for_label}}" class="db fw4 lh-copy f6">{{ form.daily_record.label }}</label>
+      <input class="pa2 input-reset ba bg-transparent w-100 measure" type="text" name={{form.daily_record.html_name}} id="daily-record-input" value="{{ result.daily_record }}"">
+    </div>
+    <div class="form-field mt3">
+      <label class="db fw4 lh-copy f6" for="{{form.goal_accomplished.id_for_label}}">{{form.goal_accomplished.label }}</label>
+      {{ form.goal_accomplished.as_widget }}
+    </div>
+    <div class="mt3">
+      <button type="submit">Save changes</button>
+    </div>
+  </form>
+</div>
+{% endblock content%}
